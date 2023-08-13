@@ -1,0 +1,68 @@
+* {
+	font-family: 'Noto Sans Vithkuqi', sans-serif;
+}
+
+html {
+	background-color:#000712;
+}
+
+h1 {
+	font-family: 'Rajdhani', sans-serif;
+	color:#2ed2ff;
+	padding-left:1em;
+	padding-right:1em;
+}
+
+a {
+	color:#2ed2ffcc;
+	transition: 0.3s;
+}
+
+a:hover {
+	color:#2ed2ff;
+}
+
+#container {
+	width:1000px;
+	background-color:#000e24;
+	margin:2em 10em 2em 10em;
+	margin-right: auto;
+ 	margin-left: auto;
+	border-image: linear-gradient(#2ed2ff90, #0057a890) 40;
+	border-width: 1px;
+	border-style: solid;
+}
+
+#blurb {
+	padding:0.5em 3em 0.5em 3em;
+	margin-left:1em;
+	margin-right:1em;
+	font-size:0.8em;
+	color:#ddd;
+	transition: 0.3s;
+	border:1px solid #000e24;
+}
+
+#blurb:hover {
+	color:#fff;
+	background-color:#0057a820;
+	border:1px solid #2ed2ff50;
+}
+
+#config {
+	padding:0.5em 3em 0.5em 3em;
+	margin-left:1em;
+	margin-right:1em;
+}
+
+#plot {
+	margin-top:1em;
+	text-align:center;
+}
+
+footer {
+	color:#2ed2ff77;
+	background-color:#2ed2ff10;
+	padding:1em;
+	font-size:0.8em;
+}
