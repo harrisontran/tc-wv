@@ -41,7 +41,7 @@ var svg = d3.select("#plot")
 
 // Read the data and compute summary statistics for each specie
 //Read the data
-d3.csv("https://github.com/harrisontran/tc-wv/blob/main/temp_data.csv?raw=true", function(data) {
+d3.csv("temp_data.csv", function(data) {
 
   // Add X axis
   var x = d3.scaleLinear()
