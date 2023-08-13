@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<meta charset="UTF-8">
 <head>
 	<!-- Load d3.js -->
 	<script src="https://d3js.org/d3.v4.js"></script>
@@ -15,76 +16,12 @@
 	<div id="blurb">
 		<p>The central infrared brightness temperature of tropical cyclones with eyes is roughly correlated with intensity. Stronger storms with deeper air pressures both evacuate air from the eye and induce adiabatic descent more efficiently, drying and warming the storm's central region. This manifests as both an increase in brightness temperatures observed by infrared radiometers in the classical longwave and water vapor bands.</p>
 	</div>
-	<div id="config">
+	<!-- <div id="config">
 		<input type="number" id="buttonXlim" value=9>
-	</div>
+	</div> -->
 	<div id="plot"></div>
 	<footer>
 		Plot and web page designed by <a href="https://twitter.com/ATXHarrisonTran" target="_blank">Harrison Tran</a>.<br />Data from GOES-16 available via <a href="https://console.cloud.google.com/storage/browser/gcp-public-data-goes-16/" target="_blank">Google Cloud</a>. Reconnaissance data from <a href="http://tropicalatlantic.com/" target="_blank">TropicalAtlantic</a>.
 	</footer>
 </div>
-
-<script>
-// set the dimensions and margins of the graph
-var margin = {top: 10, right: 30, bottom: 50, left: 60},
-    width = 850 - margin.left - margin.right,
-    height = 650 - margin.top - margin.bottom;
-
-// append the svg object to the body of the page
-var svg = d3.select("#plot")
-  .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
-
-// Read the data and compute summary statistics for each specie
-//Read the data
-d3.csv("temp_data.csv", function(data) {
-
-  // Add X axis
-  var x = d3.scaleLinear()
-    .domain([40, 0])
-    .range([ 0, width ]);
-  svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
-
-  // Add Y axis
-  var y = d3.scaleLinear()
-    .domain([980, 900])
-    .range([ height, 0]);
-  svg.append("g")
-    .call(d3.axisLeft(y));
-
-  // Y axis label:
-  svg.append("text")
-      .attr("text-anchor", "middle")
-      .attr("transform", "rotate(-90)")
-      .attr("y", -margin.left + 20)
-      .attr("x", -margin.top - height/2)
-      .attr("fill", "#2ed2ffa0")
-      .text("Reconnaissance-Measured Central Pressure [hPa; mbar]")
-
-  // Add X axis label:
-  svg.append("text")
-      .attr("text-anchor", "middle")
-      .attr("x", width/2 + margin.left)
-      .attr("y", height + margin.top + 30)
-      .attr("fill", "#2ed2ffa0")
-      .text("GOES-16 Maximum Central Brightness Temperature [°C]");
-
-  // Add dots
-  svg.append('g')
-    .selectAll("dot")
-    .data(data)
-    .enter()
-    .append("circle")
-      .attr("cx", function (d) { return x(d.MAX8); } )
-      .attr("cy", function (d) { return y(d.MSLP); } )
-      .attr("r", 1.5)
-      .style("fill", "#69b3a2")
-
-})
-</script>
+<script src="script.js"></script>

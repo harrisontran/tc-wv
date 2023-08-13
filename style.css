@@ -29,7 +29,7 @@ a:hover {
 	margin-right: auto;
  	margin-left: auto;
 	border-image: linear-gradient(#2ed2ff90, #0057a890) 40;
-	border-width: 1px;
+	border-width: 2px;
 	border-style: solid;
 }
 
@@ -58,6 +58,32 @@ a:hover {
 #plot {
 	margin-top:1em;
 	text-align:center;
+	position:relative;
+}
+
+.tooltip {
+	position:absolute;
+	background-color:#2ed2ff22;
+	border:1px solid #2ed2ff66;
+	border-radius:5px;
+	padding:5px;
+	color:#ffffff;
+	text-align:left;
+	font-size:0.8em;
+	backdrop-filter: blur(10px);
+}
+
+.tick text {
+	fill: #0057a8;
+}
+
+.tick line {
+	stroke: #0057a8;
+	stroke-opacity:0.4;
+}
+
+.domain {
+	display:none;
 }
 
 footer {
