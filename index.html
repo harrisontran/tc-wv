@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <head>
+	<title>Water Vapor + Storm Intensity</title>
 	<!-- Load d3.js -->
 	<script src="https://d3js.org/d3.v4.js"></script>
 	<!-- <script src="script.js"></script> -->
@@ -16,9 +17,22 @@
 	<div id="blurb">
 		<p>The central infrared brightness temperature of tropical cyclones with eyes is roughly correlated with intensity. Stronger storms with deeper air pressures both evacuate air from the eye and induce adiabatic descent more efficiently, drying and warming the storm's central region. This manifests as both an increase in brightness temperatures observed by infrared radiometers in the classical longwave and water vapor bands.</p>
 	</div>
-	<!-- <div id="config">
-		<input type="number" id="buttonXlim" value=9>
-	</div> -->
+	<div id="config">
+		<table>
+			<thead>
+				<tr>
+					<th><label for="minLatField">Minimum Latitude</label></th>
+					<th><label for="maxLatField">Maximum Latitude</label></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="number" low=0 max=90 id="minLatField" value=0 placeholder=0></td>
+					<td><input type="number" low=0 max=90 id="maxLatField" value=90 placeholder=90></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 	<div id="plot"></div>
 	<footer>
 		Plot and web page designed by <a href="https://twitter.com/ATXHarrisonTran" target="_blank">Harrison Tran</a>.<br />Data from GOES-16 available via <a href="https://console.cloud.google.com/storage/browser/gcp-public-data-goes-16/" target="_blank">Google Cloud</a>. Reconnaissance data from <a href="http://tropicalatlantic.com/" target="_blank">TropicalAtlantic</a>.
