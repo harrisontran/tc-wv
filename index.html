@@ -10,7 +10,6 @@
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Vithkuqi&family=Rajdhani:wght@300&display=swap');
 	</style>
-
 </head>
 <div id="container">
 	<h1>Water Vapor + Storm Intensity</h1>
@@ -21,21 +20,34 @@
 		<table>
 			<thead>
 				<tr>
-					<th><label for="minLatField">Minimum Latitude</label></th>
-					<th><label for="maxLatField">Maximum Latitude</label></th>
+					<th>Latitude</th>
+					<th>Eye</th>
+					<th>Zenith Angle</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td><input type="number" low=0 max=90 id="minLatField" value=0 placeholder=0></td>
-					<td><input type="number" low=0 max=90 id="maxLatField" value=90 placeholder=90></td>
-				</tr>
-			</tbody>
-		</table>
+					<td>
+						<label for="maxLatField">Max [°N]</label><input type="number" min=0 max=90 id="maxLatField" value=45 placeholder="Max Latitude"><br>
+						<label for="minLatField">Min [°N]</label><input type="number" min=0 max=90 id="minLatField" value=0 placeholder="Min Latitude"></td>
+						<td>
+							<label for="maxEyeField">Max [nmi]</label><input type="number" min=0 max=60 id="maxEyeField" value=60 placeholder="Max Radius"><br>
+							<label for="minEyeField">Min [nmi]</label><input type="number" min=0 max=60 id="minEyeField" value=0 placeholder="Min Radius"><br />
+							<input type="checkbox" id="eyeCircular" name="eyeCircular" value="circular" checked>
+							<label for="eyeCircular">Circular</label>
+							<input type="checkbox" id="eyeConcentric" name="eyeConcentric" value="concentric" checked>
+							<label for="eyeConcentric">Concentric</label>
+							<input type="checkbox" id="eyeElliptical" name="eyeElliptical" value="elliptical" checked>
+							<label for="eyeElliptical">Elliptical</label>
+						</td>
+						<td>Coming soon?</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="plot"></div>
+		<footer>
+			Plot and web page designed by <a href="https://twitter.com/ATXHarrisonTran" target="_blank">Harrison Tran</a>.<br />Data from GOES-16 available via <a href="https://console.cloud.google.com/storage/browser/gcp-public-data-goes-16/" target="_blank">Google Cloud</a>. Reconnaissance data from <a href="http://tropicalatlantic.com/" target="_blank">TropicalAtlantic</a>.
+		</footer>
 	</div>
-	<div id="plot"></div>
-	<footer>
-		Plot and web page designed by <a href="https://twitter.com/ATXHarrisonTran" target="_blank">Harrison Tran</a>.<br />Data from GOES-16 available via <a href="https://console.cloud.google.com/storage/browser/gcp-public-data-goes-16/" target="_blank">Google Cloud</a>. Reconnaissance data from <a href="http://tropicalatlantic.com/" target="_blank">TropicalAtlantic</a>.
-	</footer>
-</div>
-<script src="script.js"></script>
+	<script src="script.js"></script>

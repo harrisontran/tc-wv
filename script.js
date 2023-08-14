@@ -194,17 +194,67 @@ d3.csv("temp_data.csv", function(data) {
             min_lat = DEFAULT_MIN
             max_lat = DEFAULT_MAX
         }
-        console.log(min_lat + " " + max_lat)
-            // svg.selectAll('circle').remove();
-        filterData = data.filter(d => d.Lat >= min_lat && d.Lat <= max_lat);
+
+        var DEFAULT_MIN_EYE = 0
+        var DEFAULT_MAX_EYE = 60
+        var min_eye = d3.select("#minEyeField").node().value
+        var max_eye = d3.select("#maxEyeField").node().value
+        if (isNumeric(max_eye) && isNumeric(min_eye)) {
+            min_eye = parseFloat(min_eye)
+            max_eye = parseFloat(max_eye)
+            if (min_eye > max_eye) {
+                var temp = min_eye;
+                min_eye = max_eye;
+                max_eye = temp;
+            }
+            if (min_eye < DEFAULT_MIN_EYE) {
+                min_eye = DEFAULT_MIN_EYE
+            }
+            if (min_eye > DEFAULT_MAX_EYE) {
+                min_eye = DEFAULT_MAX_EYE
+            }
+            if (max_eye < DEFAULT_MIN_EYE) {
+                max_eye = DEFAULT_MIN_EYE
+            }
+            if (max_eye > DEFAULT_MAX_EYE) {
+                max_eye = DEFAULT_MAX_EYE
+            }
+
+        } else if (!isNumeric(min_eye) || !isNumeric(max_eye)) {
+            min_eye = DEFAULT_MIN_EYE
+            max_eye = DEFAULT_MAX_EYE
+        }
+
+        var valid_eyes = []
+        if (d3.select("#eyeCircular").node().checked) {
+            valid_eyes.push("Circular")
+        }
+        if (d3.select("#eyeConcentric").node().checked) {
+            valid_eyes.push("Concentric")
+        }
+        if (d3.select("#eyeElliptical").node().checked) {
+            valid_eyes.push("Elliptical")
+        }
+
+
+        console.log("LAT:" + min_lat + " " + max_lat)
+        console.log("EYE:" + min_eye + " " + max_eye)
+        console.log(valid_eyes)
+
+
         d3.selectAll('circle').each(function(d) {
-            if (d.Lat < min_lat || d.Lat > max_lat) {
+            if ((d.Lat < min_lat || d.Lat > max_lat) || (d.Radius < min_eye || d.Radius > max_eye) || !valid_eyes.includes(d.EyeType)) {
                 d3.select(this).transition(300).style("opacity", 0.05).style("pointer-events", "none")
             } else {
-              d3.select(this).transition(300).style("opacity", 1).style("pointer-events", "all")
+                d3.select(this).transition(300).style("opacity", 1).style("pointer-events", "all")
             }
         });
     }
     d3.select("#minLatField").on("input", updatePlot)
     d3.select("#maxLatField").on("input", updatePlot)
+    d3.select("#minEyeField").on("input", updatePlot)
+    d3.select("#maxEyeField").on("input", updatePlot)
+    d3.select("#eyeCircular").on("input", updatePlot)
+    d3.select("#eyeConcentric").on("input", updatePlot)
+    d3.select("#eyeElliptical").on("input", updatePlot)
 })

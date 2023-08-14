@@ -22,12 +22,15 @@ a:hover {
 	color:#2ed2ff;
 }
 
+th {
+	color:#2ed2ff;
+	text-align:left;
+}
+
 label {
 	font-size:0.9em;
 	color:#0057a8;
-}
-input, label {
-    display:block;
+	margin-right:1em;
 }
 input {
 	background-color:#2ed2ff22;
@@ -35,6 +38,7 @@ input {
 	padding:0.2em;
 	color:#2ed2ffa0;
 	border-radius:5px;
+	margin-bottom:0.25em;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -48,7 +52,13 @@ input[type=number] {
 }
 table {
     margin: 0 auto; /* or margin: 0 auto 0 auto */
+    text-align:left;
   }
+td {
+	padding-right:1em;
+	vertical-align: top;
+	color:white;
+}
 
 #container {
 	width:1000px;
